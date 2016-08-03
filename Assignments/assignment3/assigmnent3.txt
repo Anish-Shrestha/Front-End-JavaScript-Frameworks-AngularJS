@@ -1,0 +1,81 @@
+Copy and paste the code showing the implementation of the getLeaders and the getLeader functions in services.js in the text box below
+ corpfac.getLeaders=function(){
+              return leadership;
+   };
+   corpfac.getLeader=function(index){
+              return leadership[index];
+    };
+Copy and paste the code for the getPromotion function in the text box below:
+menufac.getPromotion=function(index){
+            return promotions[index];
+ };
+Copy and paste the code for the IndexController function in the text box below:
+.controller('IndexController', ['$scope', 'menuFactory','corporateFactory', function($scope, menuFactory,corporateFactory) {
+ 
+   $scope.featuredDish= menuFactory.getDish(0);  
+   $scope.promotion=menuFactory.getPromotion(0);
+   $scope.chefInfo=corporateFactory.getLeader(3);
+
+}])
+Copy and paste the code for the AboutController function in the text box below:
+.controller('AboutController', ['$scope','corporateFactory', function($scope,corporateFactory) {
+
+   $scope.chefInfos=corporateFactory.getLeaders();
+
+}])
+Copy and paste the code from aboutus.html that constructs the information for the corporate leaders, in the text box below:
+<ul class="media-list " ng-repeat="chefInfo in chefInfos">
+        <li class="media">
+                 <div class="media-left media-middle">
+                          <img class="media-object img-thumbnail"
+                            ng-src={{chefInfo.image}} alt="Chef Picture">
+                   </div>
+                    <div class="media-body">
+                           <h2 class="media-heading">{{chefInfo.name}}
+                           <small>{{chefInfo.designation}}</small></h2>
+                            <p >{{chefInfo.description}}</p>
+                     </div>
+         </li>   
+ </ul>
+Copy and paste the code (the media objects) from home.html that constructs the information for the featured dish, featured promotion and executive chef , in the text box below:
+//featured dish start
+<div class="media-left media-middle">
+              <a ng-href="#/menu/{{featuredDish._id}}">
+                <img class="media-object img-thumbnail"   ng-src={{featuredDish.image}} alt="Uthappizza">
+                 </a>
+</div>
+<div class="media-body">
+              <h2 class="media-heading">{{featuredDish.name}}
+               <span class="label label-danger">{{featuredDish.label}}</span>
+                <span class="badge">{{featuredDish.price | currency}}</span></h2>
+                <p>{{featuredDish.description}}</p>
+ </div>
+//featured dish end
+
+//featured promotion start
+<div class="media-body">
+               <h2 class="media-heading">{{promotion.name}}
+                <span class="label label-danger">{{promotionpromotion.label}}</span>
+                 <span class="badge">{{promotion.price | currency}}</span></h2>
+                  <p >{{promotion.description}}</p>
+</div>
+ <div class="media-right media-middle">
+                 <a ng-href="#/menu/{{promotion._id}}">
+                  <img class="media-object img-thumbnail"
+                    ng-src={{promotion.image}} alt="Uthappizza">
+                    </a>
+ </div>
+//featured promotion end
+
+//executive chef info end
+<div class="media-left media-middle">
+               <img class="media-object img-thumbnail"
+                ng-src={{chefInfo.image}} alt="Chef Picture">
+ </div>
+<div class="media-body">
+               <h2 class="media-heading">{{chefInfo.name}}
+                <small>{{chefInfo.designation}}</small></h2>
+                <p >{{chefInfo.description}}</p>
+</div>
+//executive chef info end
+ Edit submission
